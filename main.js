@@ -4,8 +4,12 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+function hideErrorModal() {
+  errorModal.classList.add("hidden");
+};
 
-
+const errorModal = document.querySelector('div#modal')
+document.addEventListener("load", hideErrorModal());
 
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
