@@ -22,7 +22,7 @@ for (glyph of likeGlyphs) {
   glyph.addEventListener("click", 
     function() {
       mimicServerCall()
-      .then((resp) => {
+      .then(() => {
         this.innerHTML = FULL_HEART
         this.classList.add("activated-heart")
       })
