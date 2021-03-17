@@ -23,12 +23,10 @@ for (glyph of likeGlyphs) {
     function() {
       mimicServerCall()
       .then((resp) => {
-        console.log(resp)
         this.innerHTML = FULL_HEART
         this.classList.add("activated-heart")
       })
       .catch((e) => {
-        console.log(e)
         showErrorModal()
         modalMessage.innerText = e
         setTimeout(hideErrorModal, 3000)
