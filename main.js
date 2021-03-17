@@ -4,8 +4,38 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+const errorModal = document.querySelector('div#modal')
+const modalMessage = document.querySelector('p#modal-message')
+const likeGlyphs = document.getElementsByClassName('like-glyph')
 
+function hideErrorModal() {
+  errorModal.classList.add("hidden")
+}
 
+function showErrorModal() {
+  errorModal.classList.remove("hidden")
+}
+
+document.addEventListener("load", hideErrorModal())
+
+for (glyph of likeGlyphs) {
+  glyph.addEventListener("click", 
+    function() {
+      mimicServerCall()
+      .then((resp) => {
+        console.log(resp)
+        this.innerHTML = FULL_HEART
+        this.classList.add("activated-heart")
+      })
+      .catch((e) => {
+        console.log(e)
+        showErrorModal()
+        modalMessage.innerText = e
+        setTimeout(hideErrorModal, 3000)
+      })
+    }
+  )
+}
 
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
